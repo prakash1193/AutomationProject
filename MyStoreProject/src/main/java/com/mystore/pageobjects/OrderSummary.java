@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.mystore.pageobjects;
 
 import java.security.PublicKey;

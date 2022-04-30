@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.mystore.pageobjects;
 
 import org.openqa.selenium.WebElement;

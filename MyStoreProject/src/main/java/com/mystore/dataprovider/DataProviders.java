@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.mystore.dataprovider;
 
 import java.util.ArrayList;

@@ -116,13 +116,7 @@ public class Action extends BaseClass implements ActionInterface {
 		return flag;
 	}
 
-	/**
-	 * Type text at location
-	 * 
-	 * @param locatorName
-	 * @param text
-	 * @return - true/false
-	 */
+	
 	@Override
 	public boolean type(WebElement ele, String text) {
 		boolean flag = false;
@@ -130,7 +124,7 @@ public class Action extends BaseClass implements ActionInterface {
 			flag = ele.isDisplayed();
 			ele.clear();
 			ele.sendKeys(text);
-			// logger.info("Entered text :"+text);
+			
 			flag = true;
 		} catch (Exception e) {
 			System.out.println("Location Not found");
@@ -161,22 +155,12 @@ public class Action extends BaseClass implements ActionInterface {
 				System.out.println("Select value from the DropDown");		
 			} else {
 				System.out.println("Not Selected value from the DropDown");
-				// throw new ElementNotFoundException("", "", "")
 			}
 		}
 	}
 
 	/**
-	 * select value from DropDown by using selectByIndex
-	 * 
-	 * @param locator     : Action to be performed on element (Get it from Object
-	 *                    repository)
-	 * 
-	 * @param index       : Index of value wish to select from dropdown list.
-	 * 
-	 * @param locatorName : Meaningful name to the element (Ex:Year Dropdown, items
-	 *                    Listbox etc..)
-	 * 
+	 * select value from DropDown by using selectByIndex 
 	 */
 	@Override
 	public boolean selectByIndex(WebElement element, int index) {
@@ -200,13 +184,6 @@ public class Action extends BaseClass implements ActionInterface {
 	/**
 	 * select value from DD by using value
 	 * 
-	 * @param locator     : Action to be performed on element (Get it from Object
-	 *                    repository)
-	 * 
-	 * @param value       : Value wish to select from dropdown list.
-	 * 
-	 * @param locatorName : Meaningful name to the element (Ex:Year Dropdown, items
-	 *                    Listbox etc..)
 	 */
 
 	@Override
@@ -231,14 +208,6 @@ public class Action extends BaseClass implements ActionInterface {
 
 	/**
 	 * select value from DropDown by using selectByVisibleText
-	 * 
-	 * @param locator     : Action to be performed on element (Get it from Object
-	 *                    repository)
-	 * 
-	 * @param visibletext : VisibleText wish to select from dropdown list.
-	 * 
-	 * @param locatorName : Meaningful name to the element (Ex:Year Dropdown, items
-	 *                    Listbox etc..)
 	 */
 
 	@Override
@@ -290,11 +259,10 @@ public class Action extends BaseClass implements ActionInterface {
 	public boolean JSClick(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		try {
-			// WebElement element = driver.findElement(locator);
+		
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", ele);
-			// driver.executeAsyncScript("arguments[0].click();", element);
-
+			
 			flag = true;
 
 		}
@@ -334,9 +302,6 @@ public class Action extends BaseClass implements ActionInterface {
 
 	/**
 	 * This method switch the to frame using frame ID.
-	 * 
-	 * @param idValue : Frame ID wish to switch
-	 * 
 	 */
 	@Override
 	public boolean switchToFrameById(WebDriver driver,String idValue) {
@@ -360,9 +325,6 @@ public class Action extends BaseClass implements ActionInterface {
 
 	/**
 	 * This method switch the to frame using frame Name.
-	 * 
-	 * @param nameValue : Frame Name wish to switch
-	 * 
 	 */
 	@Override
 	public boolean switchToFrameByName(WebDriver driver,String nameValue) {
@@ -423,11 +385,10 @@ public class Action extends BaseClass implements ActionInterface {
 	public boolean moveToElement(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		try {
-			// WebElement element = driver.findElement(locator);
+			
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].scrollIntoView(true);", ele);
 			Actions actions = new Actions(driver);
-			// actions.moveToElement(driver.findElement(locator)).build().perform();
 			actions.moveToElement(ele).build().perform();
 			flag = true;
 		} catch (Exception e) {
@@ -445,15 +406,7 @@ public class Action extends BaseClass implements ActionInterface {
 			return true;
 		} catch (Exception e) {
 			return false;
-		} finally {
-			/*
-			 * if (flag) {
-			 * SuccessReport("MouseOver ","MouserOver Action is performed on \""+locatorName
-			 * +"\""); } else {
-			 * failureReport("MouseOver","MouseOver action is not performed on \""
-			 * +locatorName+"\""); }
-			 */
-		}
+		} 
 	}
 	@Override
 	public boolean draggable(WebDriver driver,WebElement source, int x, int y) {
@@ -499,8 +452,6 @@ public class Action extends BaseClass implements ActionInterface {
 	public boolean slider(WebDriver driver,WebElement ele, int x, int y) {
 		boolean flag = false;
 		try {
-			// new Actions(driver).dragAndDropBy(dragitem, 400, 1).build()
-			// .perform();
 			new Actions(driver).dragAndDropBy(ele, x, y).build().perform();// 150,0
 			Thread.sleep(5000);
 			flag = true;
@@ -525,7 +476,6 @@ public class Action extends BaseClass implements ActionInterface {
 			clicker.contextClick(ele).perform();
 			flag = true;
 			return true;
-			// driver.findElement(by1).sendKeys(Keys.DOWN);
 		} catch (Exception e) {
 
 			return false;
@@ -629,9 +579,6 @@ public class Action extends BaseClass implements ActionInterface {
 	
 	/**
 	 * Verify alert present or not
-	 * 
-	 * @return: Boolean (True: If alert preset, False: If no alert)
-	 * 
 	 */
 	@Override
 	public boolean Alert(WebDriver driver) {
@@ -645,9 +592,7 @@ public class Action extends BaseClass implements ActionInterface {
 			alert.accept();
 			presentFlag = true;
 		} catch (NoAlertPresentException ex) {
-			// Alert present; set the flag
-
-			// Alert not present
+			
 			ex.printStackTrace();
 		} finally {
 			if (!presentFlag) {
@@ -684,11 +629,11 @@ public class Action extends BaseClass implements ActionInterface {
 		{ 
 			driver.switchTo().alert(); 
 			return true; 
-		}   // try 
+		}  
 		catch (NoAlertPresentException Ex) 
 		{ 
 			return false; 
-		}   // catch 
+		}  
 	}
 	
 	@Override
@@ -780,5 +725,4 @@ public class Action extends BaseClass implements ActionInterface {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
 	}
-
 }

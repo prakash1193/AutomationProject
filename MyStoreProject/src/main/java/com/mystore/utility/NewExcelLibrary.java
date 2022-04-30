@@ -14,7 +14,7 @@ public class NewExcelLibrary {
 
 	public static String path = System.getProperty("user.dir") + "\\src\\test\\resources\\TestData\\TestData.xlsx";
 
-//	public  String path;
+
 	public FileInputStream fis = null;
 	public FileOutputStream fileOut = null;
 	private XSSFWorkbook workbook = null;
@@ -31,7 +31,7 @@ public class NewExcelLibrary {
 			sheet = workbook.getSheetAt(0);
 			fis.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -45,7 +45,7 @@ public class NewExcelLibrary {
 			sheet = workbook.getSheetAt(0);
 			fis.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -91,7 +91,6 @@ public class NewExcelLibrary {
 			
 			if(cell==null)
 				return "";
-			//System.out.println(cell.getCellType());
 			if(cell.getCellType().name().equals("STRING"))
 				  return cell.getStringCellValue();
 			else if(cell.getCellType().name().equals("NUMERIC") || cell.getCellType().name().equals("FORMULA") ){
@@ -221,10 +220,6 @@ public class NewExcelLibrary {
 			if (cell == null)
 		        cell = row.createCell(colNum);
 
-		    // cell style
-		    //CellStyle cs = workbook.createCellStyle();
-		    //cs.setWrapText(true);
-		    //cell.setCellStyle(cs);
 		    cell.setCellValue(data);
 
 		    fileOut = new FileOutputStream(path);
@@ -288,8 +283,7 @@ public class NewExcelLibrary {
 					return false;
 				
 			XSSFCellStyle style = workbook.createCellStyle();
-			//style.setFillForegroundColor(HSSFColor.GREY_40_PERCENT.index);
-			//style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+			
 			
 			sheet=workbook.getSheetAt(index);
 			
@@ -297,9 +291,7 @@ public class NewExcelLibrary {
 			if (row == null)
 				row = sheet.createRow(0);
 			
-			//cell = row.getCell();	
-			//if (cell == null)
-			//System.out.println(row.getLastCellNum());
+			
 			if(row.getLastCellNum() == -1)
 				cell = row.createCell(0);
 			else
@@ -331,10 +323,7 @@ public class NewExcelLibrary {
 			workbook = new XSSFWorkbook(fis);
 			sheet=workbook.getSheet(sheetName);
 			XSSFCellStyle style = workbook.createCellStyle();
-			//style.setFillForegroundColor(HSSFColor.GREY_40_PERCENT.index);
-			//XSSFCreationHelper createHelper = workbook.getCreationHelper();
-			//style.setFillPattern(HSSFCellStyle.NO_FILL);
-			
+						
 		    
 		
 			for(int i =0;i<getRowCount(sheetName);i++){

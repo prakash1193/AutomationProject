@@ -26,7 +26,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 /**
  * BaseClass is used to load the config file and Initialize 
  * WebDriver
- *  
  */
 public class BaseClass {
 	public static Properties prop;
